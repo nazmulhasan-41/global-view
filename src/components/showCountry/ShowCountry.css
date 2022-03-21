@@ -1,0 +1,12 @@
+.border{
+    
+    border: 5px solid;
+    margin: 10px;
+    padding: 2px;
+    display:flex;
+    width: 250px;
+}
+.countryNameDiv{
+padding-left: 10px;
+
+}
