@@ -10,11 +10,18 @@ const ShowCountry = (props) => {
 
     return (
         <>
+            {props.fromFilter &&
+            
+                <div className='character'>
+                    {character}-{countryObj.length}
 
-            <div className='character'>
-                {character}-{countryObj.length}
+                </div>
 
-            </div>
+
+            }
+            
+
+
 
             {
                 countryObj.map(data => (
@@ -22,13 +29,13 @@ const ShowCountry = (props) => {
                     <Col key={Math.random()}>
 
                         <div className='border'>
-                        <Link to={`/country/${data.name.common}`}>
+                            <Link to={`/country/${data.name.common}`}>
 
 
-                            <img src={data.flags.png} alt="Girl in a jacket" width="40" />
-                            <div className='countryNameDiv'>{data.name.common}</div>
+                                <img src={data.flags.png} alt="Girl in a jacket" width="40" />
+                                <div className='countryNameDiv'>{data.name.common}</div>
 
-                        </Link>
+                            </Link>
 
                         </div>
 

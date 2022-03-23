@@ -1,5 +1,10 @@
+
 import React, { useEffect, useState } from 'react';
+import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import './Details.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 const Details = () => {
 
@@ -15,32 +20,79 @@ const Details = () => {
                 setCountry(data);
             })
     }, [])
+    // const arrowIcon=<FontAwesomeIcon icon={faArrowAltCircleRight} />;
+    const arrowIcon=''
 
     return (
         <div>
-            <h2>
-            showing Details of {name}
-                </h2>
+            
+            <Container>
 
-            <h4>
-                {
-                    country.map(country => ( 
-                        < >
-                            capital: {country.capital}<br/>
-                            continents:{country.continents}<br/>
-                            flags:{country.flags.png}<br/>
-                            maps:{country.maps.googleMaps}<br/>
-                            population:{country.population}<br/>
-                            region: {country.region}<br/>
-                        </>
+                <h4>
+                    {
+                        country.map(country => (
+                            < >
+                                <Modal.Dialog>
+                                    <Modal.Header >
+                                        <Modal.Title>{name} <img style={{'width': '40px', 'height': '30px'}} src={country.flags.png} alt="Girl in a jacket" width="500" height="600"></img></Modal.Title>
+                                    </Modal.Header>
 
-                    ))
-                }
+                                    <Modal.Body>
+                                        
 
-            </h4>
+                                        <Row className='row'>
+                                            <Col>capital  {arrowIcon}
+                                             
+                                             </Col>
+                                            
+                                            <Col>{country.capital}</Col><br/>
+                                            
+                                        </Row>
+
+                                        <Row className='row'>
+                                            <Col>continents
+                                            {arrowIcon}  </Col>
+
+                                            
+                                            <Col>{country.continents}</Col>
+
+                                        </Row>
+
+                                        <Row className='row'>
+                                            <Col>population 
+                                            {arrowIcon}
+                                             </Col>
+                                            
+                                            <Col>{country.population}</Col>
+
+                                        </Row>
+                                        <Row className='row'>
+                                            <Col>region 
+                                            {arrowIcon}
+                                             </Col>
+                                            
+                                            <Col>{country.region}</Col>
+
+                                        </Row>
+
+
+                                    </Modal.Body>
+
+                                </Modal.Dialog>                              
+                            </>
+
+                        ))
+                    }
+
+                </h4>
+
+            </Container>
 
         </div>
     );
 };
 
 export default Details;
+
+
+

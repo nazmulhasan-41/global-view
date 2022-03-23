@@ -18,7 +18,7 @@ const Countries = () => {
         countryArray[i] = new Array();
     }
 
-
+    let fromFilter=true;
     function compare(a, b) {
         if (a.name.common < b.name.common) {
             return -1;
@@ -29,7 +29,6 @@ const Countries = () => {
         return 0;
     }
 
-
     useEffect(() => {
 
         fetch(url)
@@ -38,43 +37,21 @@ const Countries = () => {
                 data.sort(compare);
                 setCountries(data);
                 console.log(data);
-
-
-                // for (var j = 0; j < countries.length; j++) {
-                //     if (((countries[j].name.common.charAt(0).charCodeAt(0)) - 65) < 26) {
-                //         //console.log((countries[j].name.common.charAt(0).charCodeAt(0))-65)
-                //         countryArray[((countries[j].name.common.charAt(0).charCodeAt(0)) - 65)].push(countries[j]);
-                //     }
-                // }
-            })
+                
+               })
     }, [])
 
     useEffect(() => {
-        // countries.map(x=>console.log(x.name.common.charAt(0)));
 
         for (var j = 0; j < countries.length; j++) {
             if (((countries[j].name.common.charAt(0).charCodeAt(0)) - 65) < 26) {
-                //console.log((countries[j].name.common.charAt(0).charCodeAt(0))-65)
                 countryArray[((countries[j].name.common.charAt(0).charCodeAt(0)) - 65)].push(countries[j]);
             }
         }
         setFinalCountryList(countryArray);
     }, [countries])
 
-        // console.log(x.length,'total length');
-        // x.map(data=>console.log(data.length))
-        
-        // console.log("==============??>>>>")
-        // for (var k=0;k<26;k++)
-        // {
-        //     console.log(x[k].length);
-        //     x[k].map(data=>console.log(data.name.common))
-        //     console.log("[[[[[[[[[]]]]]]]]]]]]]")
-        // }
-
-
-
-
+ 
     return (
         <div>
             <h3 className='countryNumber'>Country Numbers: {countries.length}</h3>
@@ -84,22 +61,19 @@ const Countries = () => {
                     {
                             finalCountryList.map(countryObjects=>
                             (countryObjects.length) ?
-                            <ShowCountry key={Math.random()} countryObj={countryObjects}/>
+                            <ShowCountry 
+                            
+                            key={Math.random()}
+                            countryObj={countryObjects}
+                            fromFilter={fromFilter}
+                            
+                            />
                             :''
                             
                             )
       
                     }
                     
-                
-
-{/* 
-                <div className='countryContainer'>
-                    {
-                     countries.map(country => <Country key={Math.random()} country={country}></Country>)
-                    }
-                </div> */}
-
             </Row>
 
         </div>
