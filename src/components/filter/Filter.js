@@ -9,6 +9,9 @@ const Filter = (props) => {
     let [countryLang, setCountryLang] = useState([]);
     let countries = props.countries;
     let [countryObj,setCountryObj]=useState([]);
+    let [buttonName,setButtonName]=useState('Loading');
+    
+
 
    let fromFilter=false;
     const languageShowHandler = () => {
@@ -34,16 +37,25 @@ const Filter = (props) => {
         )
         setCountryLang(newLang);
     }
+
     
     return (
         <div>
             <div>
+            
 
+               
             <Card>
-                <Card.Header>Sort By </Card.Header>
+                <Card.Header>Nations By </Card.Header>
                 <Card.Body>
                     
-                    <Button onClick={() => languageShowHandler()} variant="secondary">Language</Button>
+                    <Button onClick={() => languageShowHandler()} variant="secondary">
+                    
+                    {
+                        (countries.length>0)? 'Language':'Loading'
+                    }
+
+                        </Button>
                    
                 </Card.Body>
                 </Card>
@@ -51,7 +63,7 @@ const Filter = (props) => {
 
             </div>
 
-            <div> filter page {countries.length} </div>
+            {/* <div> filter page {countries.length} </div> */}
             <Container>
                 
                 {

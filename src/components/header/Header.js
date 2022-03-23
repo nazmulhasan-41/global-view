@@ -16,7 +16,7 @@ const Header = () => {
                         <Nav className="me-auto " >
                             <Link className="headerLink" to="/countries">Countries</Link>
                             <Link className="headerLink" to="/country/filter">Filter</Link>
-                            <Link className="headerLink" to="/smt">something</Link>
+                            
 
                         </Nav>
                     </Navbar.Collapse>
